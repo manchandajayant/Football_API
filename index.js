@@ -1,12 +1,16 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+
+const team = require("./Teams/model");
+const playerRouter = require("./player/router");
+const teamRouter = require("./Teams/router");
+
 const app = express();
 const port = process.env.PORT || 4000;
-const bodyParser = require("body-parser");
-const player = require("./player/model");
-const teamRouter = require("./Teams/router");
 
 app.use(bodyParser.json());
 app.use(teamRouter);
+app.use(playerRouter);
 
 app.post("/echo", (req, res) => {
   console.log("hello", req.body);

@@ -1,5 +1,6 @@
-const { Router } = require("express");
 const Team = require("./model");
+const { Router } = require("express");
+
 const router = new Router();
 
 router.get("/team", (req, res, next) => {
