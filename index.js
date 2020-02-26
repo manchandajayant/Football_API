@@ -5,7 +5,11 @@ const bodyParser = require("body-parser");
 
 const teamRouter = require("./Teams/router");
 
-app.use(teamRouter);
 app.use(bodyParser.json());
+app.use(teamRouter);
+
+app.post("/echo", (req, res) => {
+  console.log("hello", req.body);
+});
 
 app.listen(port, () => console.log(`This app is running on port ${port}`));
