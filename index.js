@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 4000;
 const bodyParser = require("body-parser");
-
+const player = require("./player/model");
 const teamRouter = require("./Teams/router");
 
 app.use(bodyParser.json());

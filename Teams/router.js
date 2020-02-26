@@ -26,4 +26,19 @@ router.get("/team/:id", (req, res, next) => {
     .catch(next);
 });
 
+router.delete("/team/:id", (req, res, next) => {
+  Team.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(numRecordsDeleted => {
+    console.log(numRecordsDeleted);
+    if (numRecordsDeleted === 1) {
+      res.status(200).send("Team deleted");
+    } else {
+      res.status(404).send("Team not found, sorry");
+    }
+  });
+});
+
 module.exports = router;
