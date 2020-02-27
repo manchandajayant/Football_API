@@ -1,6 +1,7 @@
 const Player = require("./model");
 const { Router } = require("express");
 const router = new Router();
+const Team = require("../Teams/model");
 
 router.get("/player", (req, res, next) => {
   //console.log("this is getting them", attributes);
@@ -19,7 +20,7 @@ router.post("/player", (req, res, next) => {
 });
 
 router.get("/player/:id", (req, res, next) => {
-  Player.findByPk(req.params.id)
+  Player.findByPk(req.params.id, { include: [Team] })
     .then(user => {
       res.json(user);
     })
